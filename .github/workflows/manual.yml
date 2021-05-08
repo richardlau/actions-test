@@ -33,7 +33,7 @@ jobs:
           if exist "%%i\Common7\Tools\vsdevcmd.bat" (
             %comspec% /k "%%i\Common7\Tools\vsdevcmd.bat" %*
             
-            "signtool.exe" /v /pa node.exe
+            signtool.exe /v /pa node.exe
             exit /b
           )
         )
