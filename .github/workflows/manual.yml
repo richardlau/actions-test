@@ -27,7 +27,7 @@ jobs:
     - name: Download Node.js
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
     - name: Add msbuild to PATH
-      uses: microsoft/setup-msbuild@v1.0.2
+      uses: ilammy/msvc-dev-cmd@v1
     - name: Verify
       run: |
         set
