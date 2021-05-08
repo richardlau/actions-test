@@ -28,6 +28,7 @@ jobs:
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
     - name: Verify
       run: |
+        $installationPath = vswhere.exe -prerelease -latest -property installationPath
         if ($installationPath -and (Test-Path "$installationPath\Common7\Tools\vsdevcmd.bat")) {
           $json = $(& "${env:COMSPEC}" /s /c "`"$installationPath\Common7\Tools\vsdevcmd.bat`" -no_logo -arch=x64 && pwsh -Command `"Get-ChildItem env: | Select-Object Key,Value | ConvertTo-Json`"")
           if ($LASTEXITCODE -ne 0) {
