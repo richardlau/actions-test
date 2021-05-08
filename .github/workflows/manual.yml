@@ -12,14 +12,13 @@ on:
         # Friendly description to be shown in the UI instead of 'name'
         description: 'Days'
         # Default value if no value is explicitly provided
-        default: 'days'
+        default: '90'
         # Input has to be provided for the workflow to run
         required: true
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "greet"
-  greet:
+  verify:
     # The type of runner that the job will run on
     runs-on: windows-latest
 
@@ -29,4 +28,4 @@ jobs:
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
     # Runs a single command using the runners shell
     - name: Send greeting
-      run: "C:/Program Files (x86)/Windows Kits/10/bin/10.0.17763.0/x86/signtool.exe /v /pa node.exe"
+      run: "'C:/Program Files (x86)/Windows Kits/10/bin/10.0.17763.0/x86/signtool.exe' /v /pa node.exe"
