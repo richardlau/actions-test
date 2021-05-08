@@ -28,6 +28,7 @@ jobs:
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
     # Runs a single command using the runners shell
     - name: Verify
-      run: vswhere
-       | "signtool.exe /v /pa node.exe"
+      run: |
+        vswhere
+        "signtool.exe /v /pa node.exe"
       shell: cmd
