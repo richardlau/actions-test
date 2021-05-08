@@ -27,7 +27,7 @@ jobs:
     - name: Download Node.js
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
     - name: add path
-      run: echo “::add-path::C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin”
+      run: echo "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin” | Out-File -FilePath $env:GITHUB_PATH -Encoding utf8 -Append      
     - name: Verify
       run: |
         set
