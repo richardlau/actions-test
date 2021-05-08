@@ -26,10 +26,10 @@ jobs:
     steps:
     - name: Download Node.js
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
-    # Runs a single command using the runners shell
+    - name: add path
+      run: echo “::add-path::C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin”
     - name: Verify
       run: |
-        echo “::add-path::C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin”
         set
         signtool.exe /v /pa node.exe
       shell: cmd
