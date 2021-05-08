@@ -29,14 +29,7 @@ jobs:
     # Runs a single command using the runners shell
     - name: Verify
       run: |
-        for /f "usebackq delims=" %%i in (`vswhere.exe -prerelease -latest -property installationPath`) do (
-          if exist "%%i\Common7\Tools\vsdevcmd.bat" (
-            %comspec% /k "%%i\Common7\Tools\vsdevcmd.bat" %*
-            set
-            signtool.exe /v /pa node.exe
-            exit /b
-          )
-        )
-        rem Instance or command prompt not found
-        exit /b 2
+        echo “::add-path::C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin”
+        set
+        signtool.exe /v /pa node.exe
       shell: cmd
