@@ -31,5 +31,5 @@ jobs:
     - name: Verify
       run: |
         set
-        signtool.exe /v /pa node.exe
+        signtool.exe verify /v /pa node.exe
       shell: cmd
