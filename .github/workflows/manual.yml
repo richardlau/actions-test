@@ -26,10 +26,15 @@ jobs:
     steps:
     - name: Download Node.js
       run: curl -o node.exe https://nodejs.org/dist/latest-v0.12.x/x64/node.exe
-    - name: Add msbuild to PATH
-      uses: ilammy/msvc-dev-cmd@v1
     - name: Verify
       run: |
-        set
-        signtool.exe verify /v /pa node.exe
+        $installationPath = vswhere.exe -prerelease -latest -property installationPath
+          if ($installationPath -and (test-path "$installationPath\Common7\Tools\vsdevcmd.bat")) {
+            & "${env:COMSPEC}" /s /c "`"$installationPath\Common7\Tools\vsdevcmd.bat`" -no_logo && set" | foreach-object {
+              $name, $value = $_ -split '=', 2
+              set-content env:\"$name" $value
+            }
+        }
+        
+        & "signtool.exe verify /v /pa node.exe"
       shell: cmd
