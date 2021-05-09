@@ -41,4 +41,4 @@ jobs:
             }
           }
         }        
-        & "signtool.exe verify /v /pa node.exe"
+        & signtool.exe verify /v /pa node.exe
