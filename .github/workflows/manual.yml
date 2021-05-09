@@ -42,4 +42,3 @@ jobs:
           }
         }        
         & "signtool.exe verify /v /pa node.exe"
-      shell: cmd
